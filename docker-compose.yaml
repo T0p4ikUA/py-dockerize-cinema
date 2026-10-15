@@ -1,5 +1,5 @@
 services:
-  shop:
+  app:
     build:
       context: .
     env_file:
@@ -7,7 +7,6 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      - ./:/app
       - my_media:/files/media
     command: >
       sh -c "python manage.py wait_for_db &&
@@ -22,7 +21,7 @@ services:
     env_file:
       - .env
     ports:
-      - "5433:5432"
+      - "5432:5432"
     volumes:
       - my_db:/var/lib/postgresql/data
 
